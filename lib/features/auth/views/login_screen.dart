@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:inprompt_ai_flutter/features/auth/widgets/google_sign_in_button.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
+
+import '../../../core/utils/app_routes.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -16,7 +18,40 @@ class LoginScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Center(child:GoogleSignInButton(onTap: (){})),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+              children: [
+                Column(
+                  children: [
+                    SvgPicture.asset(
+                      'assets/inprompt_ai.svg',
+                      color: Colors.black,
+                      width: 200,
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Practice. Improve. Succeed.',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
+                // Spacer(),
+                ShadButton.outline(
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      AppRoutes.home,
+                      (Route<dynamic> route) => false,
+                    );
+                  },
+                  leading: Image.asset('assets/google.png'),
+                  child: const Text('Sign in with Google'),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
