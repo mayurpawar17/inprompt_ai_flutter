@@ -269,52 +269,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-
-            const SizedBox(height: 16),
-
-            //login/logout button
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: SizedBox(
-                width: double.infinity,
-                height: 48,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: isDark
-                        ? AppColors.primaryColor
-                        : AppColors.darkSecondary,
-                    foregroundColor: isDark
-                        ? AppColors.darkPrimary
-                        : Colors.white,
-
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  onPressed: () async {
-                    // if (authStates is AuthenticatedState) {
-                    //   // LOGOUT
-                    //   context.read<AuthBloc>().add(LogoutEvent());
-                    //
-                    //   ScaffoldMessenger.of(context).showSnackBar(
-                    //     SnackBar(content: Text("Logged out successfully")),
-                    //   );
-                    //
-                    //   // Reload state
-                    //   context.read<GptBloc>().add(LoadInitialDataEvent());
-                    // } else {
-                    //   // LOGIN (open mobile input sheet)
-                    //   showMobileNumberSheet(context);
-                    // }
-                  },
-                  child: Text(
-                    'login',
-                    // authStates is AuthenticatedState ? 'Logout' : 'Login',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),
