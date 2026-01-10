@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../core/utils/app_routes.dart';
 
@@ -39,12 +40,16 @@ class LoginScreen extends StatelessWidget {
                 ),
                 // Spacer(),
                 ShadButton.outline(
-                  onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      AppRoutes.home,
-                      (Route<dynamic> route) => false,
+                  onPressed: () async {
+                    await Supabase.instance.client.auth.signInWithOAuth(
+                      OAuthProvider.google,
+                      redirectTo: 'com.your.app://login-callback',
                     );
+                    // Navigator.pushNamedAndRemoveUntil(
+                    //   context,
+                    //   AppRoutes.home,
+                    //   (Route<dynamic> route) => false,
+                    // );
                   },
                   leading: Image.asset('assets/google.png'),
                   child: const Text('Sign in with Google'),

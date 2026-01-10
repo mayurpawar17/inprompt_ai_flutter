@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "612367370658",
+    "project_id": "inprompt-ai-flutter-29ebc",
+    "storage_bucket": "inprompt-ai-flutter-29ebc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612367370658:android:adce0f9768d70ecf828afb",
+        "android_client_info": {
+          "package_name": "com.example.inprompt_ai_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHpFkUhITfmnpDbKH1LuAj7V0mut1rdpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
