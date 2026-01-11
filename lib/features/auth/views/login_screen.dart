@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-
-import '../../../core/utils/app_routes.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:inprompt_ai_flutter/core/widgets/custom_outlined_button.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -26,34 +24,12 @@ class LoginScreen extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    SvgPicture.asset(
-                      'assets/inprompt_ai.svg',
-                      color: Colors.black,
-                      width: 200,
-                    ),
+                    SvgPicture.asset('assets/inprompt_ai.svg', color: Colors.black, width: 200),
                     SizedBox(height: 20),
-                    Text(
-                      'Practice. Improve. Succeed.',
-                      style: TextStyle(fontSize: 20),
-                    ),
+                    Text('Practice. Improve. Succeed.', style: TextStyle(fontSize: 20)),
                   ],
                 ),
-                // Spacer(),
-                ShadButton.outline(
-                  onPressed: () async {
-                    await Supabase.instance.client.auth.signInWithOAuth(
-                      OAuthProvider.google,
-                      redirectTo: 'com.your.app://login-callback',
-                    );
-                    // Navigator.pushNamedAndRemoveUntil(
-                    //   context,
-                    //   AppRoutes.home,
-                    //   (Route<dynamic> route) => false,
-                    // );
-                  },
-                  leading: Image.asset('assets/google.png'),
-                  child: const Text('Sign in with Google'),
-                ),
+                CustomOutlinedButton(prefix: Image.asset('assets/google.png', height: 20), text: "Sign in with Google", onPressed: () {}),
               ],
             ),
           ),

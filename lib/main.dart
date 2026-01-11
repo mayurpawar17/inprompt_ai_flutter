@@ -4,7 +4,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inprompt_ai_flutter/firebase_options.dart';
-import 'package:shadcn_ui/shadcn_ui.dart';
 
 import 'features/onboarding/bloc/splash_bloc.dart';
 import 'features/onboarding/bloc/splash_event.dart';
@@ -29,8 +28,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShadApp(
-      home: MaterialApp(title: 'InPrompt AI', debugShowCheckedModeBanner: false, home: SplashScreen()),
-    );
+    return MaterialApp(title: 'InPrompt AI', debugShowCheckedModeBanner: false, home: SplashScreen());
   }
 }
