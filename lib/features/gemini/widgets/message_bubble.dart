@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../../../core/utils/app_colors.dart';
 import '../data/model/message.dart';
 
-
 class MessageBubble extends StatefulWidget {
   final Message message;
   final bool animate;
@@ -46,7 +45,7 @@ class _MessageBubbleState extends State<MessageBubble> {
   void _startWordFade() {
     _timer = Timer.periodic(
       const Duration(milliseconds: 70), //  speed
-          (timer) {
+      (timer) {
         if (_visibleWordCount < _words.length) {
           setState(() => _visibleWordCount++);
           widget.onTextChanged?.call(); // auto-scroll
@@ -71,7 +70,7 @@ class _MessageBubbleState extends State<MessageBubble> {
 
     final bubbleColor = isUser
         ? (isDark ? AppColors.darkSecondary : Colors.grey.shade200)
-    // : (isDark ? Colors.grey.shade800 : Colors.grey.shade300);
+        // : (isDark ? Colors.grey.shade800 : Colors.grey.shade300);
         : (isDark ? Colors.transparent : Colors.transparent);
 
     final textColor = isUser

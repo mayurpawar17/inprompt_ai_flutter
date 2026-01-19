@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:inprompt_ai_flutter/features/auth/views/login_screen.dart';
+import 'package:inprompt_ai_flutter/features/auth/views/auth_screen.dart';
 
 import '../../../core/utils/app_routes.dart';
 import '../bloc/splash_bloc.dart';
@@ -15,7 +15,10 @@ class SplashScreen extends StatelessWidget {
     return BlocListener<SplashBloc, SplashState>(
       listener: (context, state) {
         if (state is SplashNavigate) {
-        Navigator.push(context, MaterialPageRoute(builder: (_)=>LoginScreen()));
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => AuthScreen()),
+          );
         }
       },
       child: Scaffold(

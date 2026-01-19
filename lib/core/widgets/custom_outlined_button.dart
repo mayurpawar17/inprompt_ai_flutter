@@ -25,19 +25,13 @@ class CustomOutlinedButton extends StatelessWidget {
         padding: padding,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius),
-          border: Border.all(
-            color: Colors.grey.shade400,
-            width: 0.8,
-          ),
+          border: Border.all(color: Colors.grey.shade400, width: 0.8),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (prefix != null) ...[
-              prefix!,
-              const SizedBox(width: 8),
-            ],
+            if (prefix != null) ...[prefix!, const SizedBox(width: 8)],
             Text(
               text,
               style: TextStyle(

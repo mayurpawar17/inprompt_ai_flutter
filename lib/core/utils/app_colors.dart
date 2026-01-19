@@ -11,6 +11,6 @@ class AppColors {
   //DarkMode Colors
   static const Color darkPrimary = Color(0xff111111);
   static const Color darkSecondary = Color(0xff282828);
-// static const Color userBubbleColor = Color(0xffe1e0df);
-// static const Color userBubbleColor = Color(0xffe1e0df);
+  // static const Color userBubbleColor = Color(0xffe1e0df);
+  // static const Color userBubbleColor = Color(0xffe1e0df);
 }

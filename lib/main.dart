@@ -17,7 +17,11 @@ void main() async {
 
   runApp(
     MultiBlocProvider(
-      providers: [BlocProvider<SplashBloc>(create: (_) => SplashBloc()..add(SplashStarted()))],
+      providers: [
+        BlocProvider<SplashBloc>(
+          create: (_) => SplashBloc()..add(SplashStarted()),
+        ),
+      ],
       child: const MyApp(),
     ),
   );
@@ -28,6 +32,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'InPrompt AI', debugShowCheckedModeBanner: false, home: SplashScreen());
+    return MaterialApp(
+      title: 'InPrompt AI',
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
+    );
   }
 }
