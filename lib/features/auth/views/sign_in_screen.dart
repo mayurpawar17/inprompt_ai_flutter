@@ -22,21 +22,6 @@ class SignInScreen extends StatelessWidget {
           padding: const EdgeInsets.all(24),
           child: BlocConsumer<AuthBloc, AuthState>(
             listener: (context, state) {
-              if (state is AuthLoading) {
-                showDialog(
-                  context: context,
-                  builder: (_) =>
-                      const Center(child: CircularProgressIndicator()),
-                );
-              }
-
-              if (state is AuthAuthenticated) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => SignUpScreen()),
-                );
-              }
-
               if (state is AuthError) {
                 ScaffoldMessenger.of(
                   context,

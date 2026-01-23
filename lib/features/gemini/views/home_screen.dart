@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inprompt_ai_flutter/core/utils/helper_method.dart';
 import 'package:inprompt_ai_flutter/features/gemini/data/model/message.dart';
 
 import '../../../core/utils/app_colors.dart';
+import '../../auth/bloc/auth_bloc.dart';
+import '../../auth/bloc/auth_event.dart';
 import '../widgets/custom_chip.dart';
 import '../widgets/message_bubble.dart';
 
@@ -88,9 +91,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Icon(Icons.add),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.settings_outlined),
+                    icon: const Icon(Icons.logout),
                     onPressed: () {
-                      // showSettingsBottomSheet(context);
+                      context.read<AuthBloc>().add(LogoutRequested());
                     },
                   ),
                 ],

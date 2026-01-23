@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:inprompt_ai_flutter/features/auth/views/sign_in_screen.dart';
+import 'package:inprompt_ai_flutter/auth_gate.dart';
 
-import '../../../core/utils/app_routes.dart';
 import '../bloc/splash_bloc.dart';
 import '../bloc/splash_state.dart';
 
@@ -17,7 +16,7 @@ class SplashScreen extends StatelessWidget {
         if (state is SplashNavigate) {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => SignInScreen()),
+            MaterialPageRoute(builder: (_) => AuthGate()),
           );
         }
       },

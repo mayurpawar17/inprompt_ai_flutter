@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inprompt_ai_flutter/features/auth/bloc/auth_event.dart';
 import 'package:inprompt_ai_flutter/firebase_options.dart';
 
 import 'features/auth/bloc/auth_bloc.dart';
@@ -23,7 +24,9 @@ void main() async {
         BlocProvider<SplashBloc>(
           create: (_) => SplashBloc()..add(SplashStarted()),
         ),
-        BlocProvider(create: (_) => AuthBloc(AuthRepository())),
+        BlocProvider(
+          create: (_) => AuthBloc(AuthRepository())..add(AppStarted()),
+        ),
       ],
       child: const MyApp(),
     ),

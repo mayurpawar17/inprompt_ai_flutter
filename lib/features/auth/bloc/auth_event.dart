@@ -21,3 +21,7 @@ class RegisterRequested extends AuthEvent {
 
   RegisterRequested(this.email, this.password);
 }
+
+class AppStarted extends AuthEvent {}
+
+class LogoutRequested extends AuthEvent {}
