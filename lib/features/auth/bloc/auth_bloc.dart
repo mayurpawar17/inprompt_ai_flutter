@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../data/repo/auth_repository.dart';
@@ -8,32 +9,36 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
 
   AuthBloc(this.authRepository) : super(AuthInitial()) {
-    on<GoogleSignInRequested>(_onGoogleSignIn);
-    on<SignOutRequested>(_onSignOut);
+    on<LoginRequested>(_onLogin);
+    on<RegisterRequested>(_onRegister);
   }
 
-  Future<void> _onGoogleSignIn(
-    GoogleSignInRequested event,
+  Future<void> _onLogin(LoginRequested event, Emitter<AuthState> emit) async {
+    emit(AuthLoading());
+    try {
+      final user = await authRepository.signIn(
+        email: event.email,
+        password: event.password,
+      );
+      emit(AuthAuthenticated(user));
+    } on FirebaseAuthException catch (e) {
+      emit(AuthError(e.message ?? "Login failed"));
+    }
+  }
+
+  Future<void> _onRegister(
+    RegisterRequested event,
     Emitter<AuthState> emit,
   ) async {
     emit(AuthLoading());
     try {
-      final user = await authRepository.signInWithGoogle();
-      if (user != null) {
-        emit(AuthSuccess(user));
-      } else {
-        emit(AuthFailure("Sign in cancelled"));
-      }
-    } catch (e) {
-      emit(AuthFailure(e.toString()));
+      final user = await authRepository.signUp(
+        email: event.email,
+        password: event.password,
+      );
+      emit(AuthAuthenticated(user));
+    } on FirebaseAuthException catch (e) {
+      emit(AuthError(e.message ?? "Signup failed"));
     }
-  }
-
-  Future<void> _onSignOut(
-    SignOutRequested event,
-    Emitter<AuthState> emit,
-  ) async {
-    await authRepository.signOut();
-    emit(AuthInitial());
   }
 }

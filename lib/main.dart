@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inprompt_ai_flutter/firebase_options.dart';
 
+import 'features/auth/bloc/auth_bloc.dart';
+import 'features/auth/data/repo/auth_repository.dart';
 import 'features/onboarding/bloc/splash_bloc.dart';
 import 'features/onboarding/bloc/splash_event.dart';
 import 'features/onboarding/views/splash_screen.dart';
@@ -21,6 +23,7 @@ void main() async {
         BlocProvider<SplashBloc>(
           create: (_) => SplashBloc()..add(SplashStarted()),
         ),
+        BlocProvider(create: (_) => AuthBloc(AuthRepository())),
       ],
       child: const MyApp(),
     ),
