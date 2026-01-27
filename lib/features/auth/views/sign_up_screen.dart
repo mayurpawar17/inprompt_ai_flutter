@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/app_button.dart';
+import '../../../core/widgets/app_button.dart';
 import '../widgets/app_text_field.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -66,7 +66,7 @@ class SignUpScreen extends StatelessWidget {
 
                 const SizedBox(height: 24),
 
-                AppButton(text: "Create Account", onPressed: () {}),
+                AppButton(title: "Create Account", onPressed: () {}),
 
                 const SizedBox(height: 24),
 

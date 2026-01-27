@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inprompt_ai_flutter/features/auth/bloc/auth_state.dart';
 import 'package:inprompt_ai_flutter/features/auth/views/sign_up_screen.dart';
 
+import '../../../core/widgets/app_button.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_event.dart';
-import '../widgets/app_button.dart';
 import '../widgets/app_text_field.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -71,7 +71,7 @@ class SignInScreen extends StatelessWidget {
                   const SizedBox(height: 16),
 
                   AppButton(
-                    text: "Sign In",
+                    title: "Sign In",
                     onPressed: () {
                       context.read<AuthBloc>().add(
                         LoginRequested(

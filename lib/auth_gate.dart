@@ -2,11 +2,13 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inprompt_ai_flutter/core/widgets/custom_circular_progress.dart';
 import 'package:inprompt_ai_flutter/features/auth/views/sign_in_screen.dart';
 import 'package:inprompt_ai_flutter/features/gemini/views/home_screen.dart';
 
 import 'features/auth/bloc/auth_bloc.dart';
 import 'features/auth/bloc/auth_state.dart';
+import 'features/home/views/home_screen.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
@@ -17,9 +19,7 @@ class AuthGate extends StatelessWidget {
       builder: (context, state) {
         log(state.toString());
         if (state is AuthLoading || state is AuthInitial) {
-          return const Scaffold(
-            body: Center(child: CircularProgressIndicator()),
-          );
+          return const Scaffold(body: CustomCircularProgress());
         }
         if (state is AuthAuthenticated) {
           return const HomeScreen();

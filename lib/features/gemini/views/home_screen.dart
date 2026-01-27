@@ -9,14 +9,14 @@ import '../../auth/bloc/auth_event.dart';
 import '../widgets/custom_chip.dart';
 import '../widgets/message_bubble.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class GeminiScreen extends StatefulWidget {
+  const GeminiScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<GeminiScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<GeminiScreen> {
   final TextEditingController _input = TextEditingController();
 
   //for customChips
