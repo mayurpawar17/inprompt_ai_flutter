@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inprompt_ai_flutter/core/utils/app_colors.dart';
 import 'package:inprompt_ai_flutter/features/auth/bloc/auth_state.dart';
 import 'package:inprompt_ai_flutter/features/auth/views/sign_up_screen.dart';
 
@@ -17,6 +18,7 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.primaryColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24),

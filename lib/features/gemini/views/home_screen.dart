@@ -90,12 +90,12 @@ class _HomeScreenState extends State<GeminiScreen> {
                     },
                     icon: Icon(Icons.add),
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.logout),
-                    onPressed: () {
-                      context.read<AuthBloc>().add(LogoutRequested());
-                    },
-                  ),
+                  // IconButton(
+                  //   icon: const Icon(Icons.logout),
+                  //   onPressed: () {
+                  //     context.read<AuthBloc>().add(LogoutRequested());
+                  //   },
+                  // ),
                 ],
               ),
             ),

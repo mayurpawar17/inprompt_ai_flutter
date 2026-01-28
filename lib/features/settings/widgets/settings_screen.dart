@@ -1,20 +1,39 @@
-// Modern, professional Settings Screen UI (Flutter)
-// Material 3 inspired • Clean • Reusable • Production-ready
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inprompt_ai_flutter/core/utils/app_colors.dart';
 
-class SettingsScreen extends StatelessWidget {
+import '../../auth/bloc/auth_bloc.dart';
+import '../../auth/bloc/auth_event.dart';
+
+class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
+
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Settings'), centerTitle: true),
+      backgroundColor: AppColors.primaryColor,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: const Text('Settings'),
+        centerTitle: true,
+        backgroundColor: AppColors.primaryColor,
+      ),
       body: ListView(
         padding: const EdgeInsets.all(16),
-        children: const [
+        children: [
           _ProfileCard(),
           SizedBox(height: 24),
           _SettingsSection(
@@ -52,6 +71,9 @@ class SettingsScreen extends StatelessWidget {
                 icon: Icons.logout,
                 title: 'Logout',
                 isDestructive: true,
+                onTap: () {
+                  context.read<AuthBloc>().add(LogoutRequested());
+                },
               ),
             ],
           ),
@@ -152,6 +174,7 @@ class SettingsItem extends StatelessWidget {
   final String? subtitle;
   final Widget? trailing;
   final bool isDestructive;
+  final VoidCallback? onTap;
 
   const SettingsItem({
     super.key,
@@ -160,6 +183,7 @@ class SettingsItem extends StatelessWidget {
     this.subtitle,
     this.trailing,
     this.isDestructive = false,
+    this.onTap,
   });
 
   @override
@@ -168,8 +192,12 @@ class SettingsItem extends StatelessWidget {
 
     return InkWell(
       borderRadius: BorderRadius.circular(16),
-      onTap: () {},
-      child: Padding(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: AppColors.whiteColor,
+        ),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         child: Row(
           children: [

@@ -26,6 +26,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthUnauthenticated());
     });
   }
+
   void _onAppStarted(AppStarted event, Emitter<AuthState> emit) {
     emit(AuthLoading());
 
@@ -59,12 +60,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthLoading());
     try {
       final user = await authRepository.signUp(
+        name: event.name,
         email: event.email,
         password: event.password,
       );
       emit(AuthAuthenticated(user));
     } on FirebaseAuthException catch (e) {
       emit(AuthError(e.message ?? "Signup failed"));
+    } catch (_) {
+      emit(AuthError("Something went wrong"));
     }
   }
 
@@ -85,6 +89,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
 class _InternalAuthenticated extends AuthEvent {
   final User user;
+
   _InternalAuthenticated(this.user);
 }
 

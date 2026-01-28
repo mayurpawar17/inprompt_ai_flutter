@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/utils/app_colors.dart';
 import '../../../core/widgets/app_button.dart';
+import '../bloc/auth_bloc.dart';
+import '../bloc/auth_event.dart';
 import '../widgets/app_text_field.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -14,6 +18,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.primaryColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24),
@@ -66,7 +71,18 @@ class SignUpScreen extends StatelessWidget {
 
                 const SizedBox(height: 24),
 
-                AppButton(title: "Create Account", onPressed: () {}),
+                AppButton(
+                  title: "Create Account",
+                  onPressed: () {
+                    context.read<AuthBloc>().add(
+                      RegisterRequested(
+                        name: nameController.text.trim(),
+                        email: emailController.text.trim(),
+                        password: passwordController.text.trim(),
+                      ),
+                    );
+                  },
+                ),
 
                 const SizedBox(height: 24),
 
