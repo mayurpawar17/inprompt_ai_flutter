@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:inprompt_ai_flutter/core/utils/helper_method.dart';
+import 'package:inprompt_ai_flutter/features/settings/widgets/settings_screen.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../gemini/views/home_screen.dart';
@@ -14,10 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Widget> _screens = const [
-    GeminiScreen(),
-    Center(child: Text("Settings")),
-  ];
+  final List<Widget> _screens = const [GeminiScreen(), SettingsScreen()];
 
   void _onTap(int index) {
     HapticFeedback.selectionClick();
