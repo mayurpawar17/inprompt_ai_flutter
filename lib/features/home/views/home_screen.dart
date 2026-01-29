@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:inprompt_ai_flutter/core/utils/helper_method.dart';
-import 'package:inprompt_ai_flutter/features/settings/widgets/settings_screen.dart';
+import 'package:inprompt_ai_flutter/features/settings/views/settings_screen.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../gemini/views/home_screen.dart';

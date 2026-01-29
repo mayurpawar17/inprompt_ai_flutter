@@ -4,6 +4,7 @@ import 'package:inprompt_ai_flutter/core/utils/app_colors.dart';
 
 import '../../auth/bloc/auth_bloc.dart';
 import '../../auth/bloc/auth_event.dart';
+import '../widgets/logout_confirmation_dialog.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -71,8 +72,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 icon: Icons.logout,
                 title: 'Logout',
                 isDestructive: true,
-                onTap: () {
-                  context.read<AuthBloc>().add(LogoutRequested());
+                onTap: () async{
+                  await showDialog(
+                  context: context,
+                  builder: (context) => const LogoutConfirmationDialog(),
+                  ).then((confirmed) {
+                    if (confirmed == true) {
+                      // Perform logout logic
+                    }
+                  });
+                  // context.read<AuthBloc>().add(LogoutRequested());
                 },
               ),
             ],
